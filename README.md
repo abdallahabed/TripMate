@@ -104,9 +104,9 @@ TripMate/
 
 | Screen | Preview |
 |--------|---------|
-| Home Screen | <img src="../images/home.jpg" width="300"/> |
-| Add Task | <img src="../images/add_task.jpg" width="300"/> |
-| Task List | <img src="../images/task_list.jpg" width="300"/> |
+| Home Screen | <img src="images/home.png" width="300"/> |
+| Add Task | <img src="images/add_task.png" width="300"/> |
+| Task List | <img src="images/task_list.png" width="300"/> |
 
 ---
 
