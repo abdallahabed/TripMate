@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TripPlanningApp</string>
+    <string name="search_tasks">search tasks</string>
+    <string name="Search_text">Search tasks by name, date, or category</string>
+    <string name="logo_description">Logo for the App</string>
+
+    <string-array name="task_categories">
+        <item>Packing</item>
+        <item>Food</item>
+        <item>Documents</item>
+        <item>Clothes</item>
+        <item>Medicine</item>
+        <item>Other</item>
+    </string-array>
+
+
+
+</resources>

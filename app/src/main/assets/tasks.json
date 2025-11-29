@@ -1,0 +1,132 @@
+[
+  {
+    "id": "1",
+    "title": "Pack Suitcase",
+    "description": "Include clothes, shoes, and toiletries",
+    "date": "2025-12-01",
+    "category": "Packing",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  },
+  {
+    "id": "2",
+    "title": "Prepare Snacks",
+    "description": "Buy or pack snacks for the trip",
+    "date": "",
+    "category": "Food",
+    "priority": "Low",
+    "isImportant": false,
+    "isCompleted": false
+  },
+  {
+    "id": "3",
+    "title": "Check Passport",
+    "description": "Ensure passport is valid for travel",
+    "date": "2025-11-28",
+    "category": "Documents",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": true
+  },
+  {
+    "id": "4",
+    "title": "Pack Winter Clothes",
+    "description": "Include jackets, gloves, and hats",
+    "date": "",
+    "category": "Clothes",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  },
+  {
+    "id": "5",
+    "title": "Bring Medicine",
+    "description": "Include prescription and first aid",
+    "date": "2025-12-02",
+    "category": "Medicine",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  },
+  {
+    "id": "6",
+    "title": "Pack Other Essentials",
+    "description": "Charger, headphones, travel pillow",
+    "date": "",
+    "category": "Other",
+    "priority": "Low",
+    "isImportant": false,
+    "isCompleted": false
+  },
+  {
+    "id": "7",
+    "title": "Pack Toiletries",
+    "description": "Toothbrush, toothpaste, shampoo",
+    "date": "",
+    "category": "Packing",
+    "priority": "Low",
+    "isImportant": false,
+    "isCompleted": false
+  },
+  {
+    "id": "8",
+    "title": "Buy Snacks",
+    "description": "Fruit, nuts, chocolate bars",
+    "date": "2025-11-30",
+    "category": "Food",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  },
+  {
+    "id": "9",
+    "title": "Print Tickets",
+    "description": "Print flight and train tickets",
+    "date": "2025-11-29",
+    "category": "Documents",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": true
+  },
+  {
+    "id": "10",
+    "title": "Pack Casual Clothes",
+    "description": "T-shirts, jeans, jackets",
+    "date": "",
+    "category": "Clothes",
+    "priority": "Low",
+    "isImportant": false,
+    "isCompleted": false
+  },
+  {
+    "id": "11",
+    "title": "Bring Painkillers",
+    "description": "Paracetamol, ibuprofen",
+    "date": "",
+    "category": "Medicine",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  },
+  {
+    "id": "12",
+    "title": "Pack Travel Pillow",
+    "description": "For long flights or bus rides",
+    "date": "",
+    "category": "Other",
+    "priority": "Low",
+    "isImportant": false,
+    "isCompleted": false
+  },
+  {
+    "id": "13",
+    "title": "Pack Electronics",
+    "description": "Phone, charger, power bank",
+    "date": "2025-12-01",
+    "category": "Other",
+    "priority": "High",
+    "isImportant": true,
+    "isCompleted": false
+  }
+]
