@@ -32,19 +32,17 @@ public class MainActivity extends AppCompatActivity {
     private Button searchButton;
     private Button addButton;
     private Button viewButton;
-    private SharedPrefHelper sharedPreferences;
     private List<Task> Tasks;
+    private TaskRepository taskRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         intializeViews();
         setUpCategoreySpinner();
-        sharedPreferences = new SharedPrefHelper(this);
-
-        sharedPreferences.loadDefaultTasksFromAssets(this);
-
-        Tasks = sharedPreferences.loadTasks();
+        taskRepository = new TaskRepository(this);
+        taskRepository.seedDefaultTasksIfEmpty();   // ← add this line back
+        Tasks = taskRepository.loadTasks();
 
         setUpEventListeners();
         loadTasks();
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTasks(){
-        Tasks = sharedPreferences.loadTasks();
+        Tasks = taskRepository.loadTasks();
     }
     private void performSearch() {
         String searchQuery = searchEditText.getText().toString().trim().toLowerCase();
@@ -130,11 +128,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, TasksActivity.class);
             intent.putExtra("filtered", true);
 
-            ArrayList<String> taskIds = new ArrayList<>();
+            ArrayList<Integer> taskIds = new ArrayList<>();
             for (Task task : filteredTasks) {
                 taskIds.add(task.getId());
             }
-            intent.putStringArrayListExtra("taskIds", taskIds);
+            intent.putIntegerArrayListExtra("taskIds", taskIds);
 
             startActivity(intent);
         }

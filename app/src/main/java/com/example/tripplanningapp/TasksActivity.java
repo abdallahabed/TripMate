@@ -19,14 +19,15 @@ public class TasksActivity extends AppCompatActivity implements TaskAdapter.OnTa
     private RecyclerView tasksRecycleView;
     private Button BackButton;
     private TaskAdapter taskAdapter;
-    private SharedPrefHelper prefHelper;
+//    private SharedPrefHelper prefHelper;
+private TaskRepository taskRepository;
     private List<Task> displayTasks;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tasks);
-        prefHelper = new SharedPrefHelper(this);
+        taskRepository = new TaskRepository(this);
         tasksRecycleView = findViewById(R.id.tasksRecyclerView);
         BackButton = findViewById(R.id.BackButton);
         BackButton.setOnClickListener(v -> finish());
@@ -51,12 +52,11 @@ public class TasksActivity extends AppCompatActivity implements TaskAdapter.OnTa
         boolean isFiltered = intent.getBooleanExtra("filtered", false);
 
         if (isFiltered) {
-            ArrayList<String> taskIds = intent.getStringArrayListExtra("taskIds");
+            ArrayList<Integer> taskIds = intent.getIntegerArrayListExtra("taskIds");
 
             if (taskIds != null && !taskIds.isEmpty()) {
-
-                Set<String> idSet = new HashSet<>(taskIds);
-                List<Task> allTasks = prefHelper.loadTasks();
+                Set<Integer> idSet = new HashSet<>(taskIds);
+                List<Task> allTasks = taskRepository.loadTasks();
 
                 displayTasks.clear();
 
@@ -65,6 +65,7 @@ public class TasksActivity extends AppCompatActivity implements TaskAdapter.OnTa
                         displayTasks.add(t);
                     }
                 }
+
 
                 taskAdapter.notifyDataSetChanged();
 
@@ -80,7 +81,7 @@ public class TasksActivity extends AppCompatActivity implements TaskAdapter.OnTa
 
     private void loadAllTasks() {
         displayTasks.clear();
-        displayTasks.addAll(prefHelper.loadTasks());
+        displayTasks.addAll(taskRepository.loadTasks());
         taskAdapter.notifyDataSetChanged();
 
         if (displayTasks.isEmpty()) {
@@ -116,7 +117,7 @@ public class TasksActivity extends AppCompatActivity implements TaskAdapter.OnTa
     @Override
     public void onTaskDelete(Task task) {
         displayTasks.remove(task);
-        prefHelper.deleteTask(task.getId());
+        taskRepository.deleteTask(task);
 
         taskAdapter.notifyDataSetChanged();
 

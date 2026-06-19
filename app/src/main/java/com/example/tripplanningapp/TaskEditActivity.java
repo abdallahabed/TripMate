@@ -31,9 +31,9 @@ public class TaskEditActivity extends AppCompatActivity {
     private Button updateButton;
     private Button cancelButton;
 
-    private SharedPrefHelper prefHelper;
+    private TaskRepository taskRepository;
     private String mode;
-    private String taskId;
+    private int taskId;
     private Task currentTask;
     private String selectedDate = "";
 
@@ -43,17 +43,17 @@ public class TaskEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        prefHelper = new SharedPrefHelper(this);
+        taskRepository = new TaskRepository(this);
 
         Intent intent = getIntent();
         mode = intent.getStringExtra("mode");
-        taskId = intent.getStringExtra("taskId");
+        taskId = intent.getIntExtra("taskId", -1);
 
         initializeViews();
 
         setupCategorySpinner();
 
-        if ("edit".equals(mode) && taskId != null) {
+        if ("edit".equals(mode) && taskId != -1) {
             loadTaskData();
         }
 
@@ -119,7 +119,7 @@ public class TaskEditActivity extends AppCompatActivity {
 
 
     private void loadTaskData() {
-        currentTask = prefHelper.getTaskById(taskId);
+        currentTask = taskRepository.getTaskById(taskId);
         if (currentTask != null) {
             nameEditText.setText(currentTask.getTitle());
             descriptionEditText.setText(currentTask.getDescription());
@@ -186,14 +186,13 @@ public class TaskEditActivity extends AppCompatActivity {
 
         if ("add".equals(mode)) {
             Task newTask = new Task();
-            newTask.setId(String.valueOf(System.currentTimeMillis()));
             newTask.setTitle(name);
             newTask.setDescription(description);
             newTask.setDate(selectedDate);
             newTask.setPriority(priority);
             newTask.setCategory(category);
 
-            prefHelper.addTask(newTask);
+            taskRepository.addTask(newTask);
             Toast.makeText(this, "Task added", Toast.LENGTH_SHORT).show();
         } else if ("edit".equals(mode) && currentTask != null) {
             currentTask.setTitle(name);
@@ -202,7 +201,7 @@ public class TaskEditActivity extends AppCompatActivity {
             currentTask.setPriority(priority);
             currentTask.setCategory(category);
 
-            prefHelper.updateTask(currentTask);
+            taskRepository.updateTask(currentTask);
             Toast.makeText(this, "Task updated", Toast.LENGTH_SHORT).show();
         }
 
